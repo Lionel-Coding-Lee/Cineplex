@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//WebContent/attendant/login.jsp=UTF-8
+encoding//WebContent/manager/login.jsp=UTF-8
+encoding//WebContent/member/activity.jsp=UTF-8
+encoding//WebContent/member/film.jsp=UTF-8
+encoding//WebContent/member/index.jsp=UTF-8
+encoding//WebContent/member/ticketlist.jsp=UTF-8
+encoding//WebContent/user/login.jsp=UTF-8
+encoding//WebContent/user/register.jsp=UTF-8
+encoding/<project>=UTF-8

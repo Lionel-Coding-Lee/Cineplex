@@ -1,0 +1,20 @@
+create scheme cineplex;
+use cineplex;
+
+create or replace type LongList as varray(10) of int(32);
+create table activities(activityId int(32), name varchar(32), content varchar(32), list LongList, number int(16), primary key(activityId));
+
+create table attendants(name varchar(32), password varchar(32), primary key(name));
+
+create table bankaccounts(accountId int(32), password varchar(32), balance int(16), primary key(accountId));
+
+create table films(filmNumber int(32), filmName varchar(32), offline datetime, price varchar(32), primary key(filmNumber));
+
+create table managers(managerId varchar(32), password varchar(32), name varchar(32), primary key(managerId));
+
+create or replace type BooleanList as varray(10) of bit;
+create table matches(filmId int(32), hallNum int(16), playTime datetime, matchId int(32), seats BooleanList, pass bit, constraint matchPK primary key(filmId, hallNum, playTime));
+
+create table members(id int(32), name varchar(32), password varchar(32), rank decimal(18, 2), VIP int(16), isFrozen bit, balance decimal(18, 2), lastRecord datetime, birthday datatime, phoneNumber varchar(32), primary key(id));
+
+create table tickets(ticketId int(32), matchId int(32), seat int(16), filmName varchar(32), buyer varchar(32), primary key(ticketId));

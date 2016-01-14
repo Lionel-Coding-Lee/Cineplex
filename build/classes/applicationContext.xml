@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:cache="http://www.springframework.org/schema/cache" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans         
+      http://www.springframework.org/schema/beans/spring-beans-4.0.xsd        
+      http://www.springframework.org/schema/aop         
+      http://www.springframework.org/schema/aop/spring-aop-4.0.xsd        
+      http://www.springframework.org/schema/context         
+      http://www.springframework.org/schema/context/spring-context-4.0.xsd        
+      http://www.springframework.org/schema/tx         
+      http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+      http://www.springframework.org/schema/cache 
+      http://www.springframework.org/schema/cache/spring-cache-4.0.xsd">
+	<!-- <bean id="..." class="..."> collaborators and configuration for this 
+		bean go here </bean> <bean id="..." class="..."> collaborators and configuration 
+		for this bean go here </bean> more bean definitions go here -->
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/cineplex?autoReconnect=true" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+	</bean>
+
+	<!-- 配置sessionFactory -->
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="Model" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.connection.autocommit">true</prop>
+			</props>
+		</property>
+
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- Action Bean -->
+	<bean id="BaseAction" class="Action.BaseAction">
+	</bean>
+
+	<bean id="AttendantLoginAction" class="Action.Attendant.AttendantLoginAction">
+	</bean>
+	<bean id="AttendantFilmAction" class="Action.Attendant.FilmAction">
+	</bean>
+	<bean id="AddFilmAction" class="Action.Attendant.AddFilmAction">
+	</bean>
+	<bean id="AttendantMatchAction" class="Action.Attendant.MatchAction">
+	</bean>
+	<bean id="AttendantActivityAction" class="Action.Attendant.ActivityAction">
+	</bean>
+	<bean id="AddActivityAction" class="Action.Attendant.AddActivityAction">
+	</bean>
+	<bean id="AddMatchAction" class="Action.Attendant.AddMatchAction">
+	</bean>
+	<bean id="AttendantIndexAction" class="Action.Attendant.IndexAction">
+	</bean>
+	<bean id="AttendantPrePayAction" class="Action.Attendant.PrePayAction">
+	</bean>
+	<bean id="AttendantPayAction" class="Action.Attendant.PayAction">
+	</bean>
+
+	<bean id="MemberRegisterAction" class="Action.Member.RegisterAction">
+	</bean>
+	<bean id="MemberLoginAction" class="Action.Member.LoginAction">
+	</bean>
+	<bean id="MemberAddActivityAction" class="Action.Member.AddActivityAction">
+	</bean>
+	<bean id="MemberTicketAction" class="Action.Member.TicketAction">
+	</bean>
+	<bean id="MemberFilmAction" class="Action.Member.FilmAction">
+	</bean>
+	<bean id="MemberActivityAction" class="Action.Member.ActivityAction">
+	</bean>
+	<bean id="MemberIndexAction" class="Action.Member.IndexAction">
+	</bean>
+	<bean id="MemberPersonAction" class="Action.Member.PersonAction"> 
+	</bean>
+	<bean id="MemberUpgradeAction" class="Action.Member.UpgradeAction">
+	</bean>
+	<bean id="MemberPrePayAction" class="Action.Member.PrePayAction">
+	</bean>
+	<bean id="MemberPayAction" class="Action.Member.PayAction">
+	</bean>
+	<bean id="MemberPersonPayAction" class="Action.Member.PersonPayAction">
+	</bean>
+
+
+	<bean id="ManagerLoginAction" class="Action.Manager.LoginAction">
+	</bean>
+	<bean id="ManagerMatchAction" class="Action.Manager.MatchAction">
+	</bean>
+	<bean id="ManagerPassMatchAction" class="Action.Manager.PassMatchAction">
+	</bean>
+	<bean id="ManagerIndexAction" class="Action.Manager.IndexAction">
+	</bean>
+	<bean id="ManagerStatisticAction" class="Action.Manager.StatisticAction">
+	</bean>
+	
+	
+	<bean id="IndexAction" class="Action.IndexAction">
+	</bean>
+	<bean id="BaseMethod" class="Action.BaseMethod">
+	</bean>
+
+
+	<!-- Dao Bean -->
+	<bean id="BaseDaoImp" class="Dao.Imp.BaseDaoImp">
+	</bean>
+	<bean id="MemberDaoImp" class="Dao.Imp.MemberDaoImp">
+	</bean>
+	<bean id="FilmDaoImp" class="Dao.Imp.FilmDaoImp">
+	</bean>
+	<bean id="TicketDaoImp" class="Dao.Imp.TicketDaoImp">
+	</bean>
+	<bean id="MatchDaoImp" class="Dao.Imp.MatchDaoImp">
+	</bean>
+	<bean id="AttendantDaoImp" class="Dao.Imp.AttendantDaoImp">
+	</bean>
+	<bean id="ActivityDaoImp" class="Dao.Imp.ActivityDaoImp">
+	</bean>
+	<bean id="ManagerDaoImp" class="Dao.Imp.ManagerDaoImp">
+	</bean>
+	<bean id="BankDaoImp" class="Dao.Imp.BankDaoImp">
+	</bean>
+
+	<!-- Service Bean -->
+	<bean id="MemberManageServiceImp" class="Service.Imp.MemberManageServiceImp">
+	</bean>
+	<bean id="FilmManageServiceImp" class="Service.Imp.FilmManageServiceImp">
+	</bean>
+	<bean id="TicketManageServiceImp" class="Service.Imp.TicektManageServiceImp">
+	</bean>
+	<bean id="MatchManageServiceImp" class="Service.Imp.MatchManageServiceImp">
+	</bean>
+	<bean id="ActivityManageServiceImp" class="Service.Imp.ActivityManageServiceImp">
+	</bean>
+	<bean id="AttendantManageServiceImp" class="Service.Imp.AttendantManageServiceImp">
+	</bean>
+	<bean id="ManagerManageServiceImp" class="Service.Imp.ManagerManageServiceImp">
+	</bean>
+	<bean id="BankManageServiceImp" class="Service.Imp.BankManageServiceImp">
+	</bean>
+	<bean id="TimerServiceImp" class="Service.Imp.TimerServiceImp">
+	</bean>
+
+	<!-- Model Bean -->
+	<bean id="Member" class="Model.Member">
+	</bean>
+	<bean id="Film" class="Model.Film">
+	</bean>
+	<bean id="Ticket" class="Model.Ticket">
+	</bean>
+	<bean id="Match" class="Model.Match">
+	</bean>
+	<bean id="BankAccount" class="Model.BankAccount">
+	</bean>
+	<bean id="Activity" class="Model.Activity">
+	</bean>
+	<bean id="Manager" class="Model.Manager">
+	</bean>
+	<bean id="Attendant" class="Model.Attendant">
+	</bean>
+
+
+	<!-- 定义 Autowired 自动注入 bean -->
+	<bean
+		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+</beans>

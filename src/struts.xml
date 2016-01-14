@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+
+	<package name="user" namespace="/user" extends="struts-default">
+
+		<action name="register" class="MemberRegisterAction">
+			<result name="success">/user/RegSuccess.jsp</result>
+			<result name="input">/user/register.jsp</result>
+		</action>
+
+		<action name="login" class="MemberLoginAction">
+			<result name="successmem">/member/index.jsp</result>
+			<result name="successatt">/attendant/index.jsp</result>
+			<result name="successmana">/manager/index.jsp</result>
+			<result name="input">/user/login.jsp</result>
+		</action>
+
+	</package>
+
+	<package name="member" namespace="/member" extends="struts-default">
+	<action name="index" class="MemberIndexAction">
+		<result name="success">/member/index.jsp</result>
+	</action>
+		<action name="activity" class="MemberActivityAction">
+			<result name="success">/member/activity.jsp</result>
+			<result name="failed">/member/error.jsp</result>
+		</action>
+		<action name="addActivity" class="MemberAddActivityAction">
+			<result name="success">/member/activity.jsp</result>
+			<result name="failed">/member/error.jsp</result>
+		</action>
+		<action name="film" class="MemberFilmAction">
+			<result name="success">/member/film.jsp</result>
+			<result name="failed">/member/error.jsp</result>
+		</action>
+		<action name="prePay" class="MemberPrePayAction">
+			<result name="success">/member/pay.jsp</result>
+		</action>
+		<action name="pay" class="MemberPayAction">
+			<result name="success">/member/index.jsp</result>
+			<result name="input">/member/pay.jsp</result>
+		</action>
+		<action name="ticket" class="MemberTicketAction">
+			<result name="success">/member/ticketlist.jsp</result>
+		</action>
+		<action name="member" class="MemberMemberAction">
+			<result name="success">/member/member.jsp</result>
+		</action>
+		<action name="person" class="MemberPersonAction">
+			<result name="success">/member/person.jsp</result>
+		</action>
+		<action name="personpay" class="MemberPersonPayAction">
+			<result name="success">/member/person.jsp</result>
+		</action>
+	</package>
+
+	<package name="attendant" namespace="/attendant" extends="struts-default">
+		<action name="login" class="AttendantLoginAction">
+			<result name="success">/attendant/index.jsp</result>
+			<result name="input">/attendant/login.jsp</result>
+		</action>
+		<action name="film" class="AttendantFilmAction">
+			<result name="success">/attendant/film.jsp</result>
+			<result name="failed">/attendant/filmfailed.jsp</result>
+		</action>
+		<action name="addFilm" class="AddFilmAction">
+			<result name="success">/attendant/film.jsp</result>
+			<result name="failed">/attendant/filmfailed.jsp</result>
+		</action>
+		<action name="match" class="AttendantMatchAction">
+			<result name="success">/attendant/match.jsp</result>
+		</action>
+		<action name="addMatch" class="AddMatchAction">
+			<result name="success">/attendant/match.jsp</result>
+		</action>
+		<action name="activity" class="AttendantActivityAction">
+			<result name="success">/attendant/activity.jsp</result>
+		</action>
+		<action name="addActivity" class="AddActivityAction">
+			<result name="success">/attendant/activity.jsp</result>
+		</action>
+		<action name="index" class="AttendantIndexAction">
+			<result name="success">/attendant/index.jsp</result>
+			<result name="failed">/attendant/error.jsp</result>
+		</action>
+		<action name="prePay" class="AttendantPrePayAction">
+			<result name="success">/attendant/pay.jsp</result>
+		</action>
+		<action name="pay" class="AttendantPayAction">
+			<result name="success">/attendant/index.jsp</result>
+			<result name="input">/attendant/pay.jsp</result>
+		</action>
+	</package>
+
+	<package name="manager" namespace="/manager" extends="struts-default">
+		<action name="login" class="ManagerLoginAction">
+			<result name="success">/manager/index.jsp</result>
+			<result name="input">/manager/login.jsp</result>
+		</action>
+		<action name="match" class="ManagerMatchAction">
+			<result name="success">/manager/match.jsp</result>
+			<result name="failed">/manager/error.jsp</result>
+		</action>
+		<action name="passMatch" class="ManagerPassMatchAction">
+			<result name="success">/manager/match.jsp</result>
+			<result name="failed">/manager/error.jsp</result>
+		</action>
+		<action name="index" class="ManagerIndexAction">
+			<result name="success">/manager/index.jsp</result>
+			<result name="failed">/manager/error.jsp</result>
+		</action>
+		<action name="statistic" class="ManagerStatisticAction">
+			<result name="success">/manager/statistic.jsp</result>
+			<result name="failed">/manager/error.jsp</result>
+		</action>
+	</package>
+</struts>
+
